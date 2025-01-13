@@ -6,6 +6,7 @@ const express = require('express')
 const expressEjsLayouts = require('express-ejs-layouts')
 const expressFileUpload = require('express-fileupload')
 const path = require('path')
+const cookieParser = require('cookie-parser')
 
 // Membuat aplikasi Express
 const app = express()
@@ -13,6 +14,8 @@ const app = express()
 // Menggunakan middleware untuk mengurai form data
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json()) // Menggunakan middleware untuk JSON body parsing
+app.use(cookieParser())
+app.use(require('./middlewares/authenticate.js'))
 
 // Menggunakan middleware untuk file upload
 app.use(expressFileUpload())
@@ -29,6 +32,7 @@ app.set('view engine', 'ejs')
 
 // Rute utama aplikasi, mengimpor rute dari file lain
 app.use('/', require('./routes/recipe.routes'))
+app.use('/', require('./routes/auth.js'))
 
 // Rute untuk menangani 404 (Page Not Found)
 app.use((req, res) => {

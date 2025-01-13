@@ -1,5 +1,7 @@
+const jwt = require('jsonwebtoken')
 const { Router } = require('express')
 const recipeRoute = Router()
+const admin = require('../middlewares/admin')
 
 // Mengimpor controller yang dibutuhkan
 const {
@@ -35,7 +37,7 @@ recipeRoute.get('/test', testController)
 recipeRoute.get('/explore-recipes', filterByCategory)
 
 // Rute untuk menampilkan form submit resep
-recipeRoute.get('/submit-recipe', getCreateRecipeForm)
+recipeRoute.get('/submit-recipe', admin, getCreateRecipeForm)
 
 // rute untuk menampilkan detail single resep
 recipeRoute.get('/recipe/:id', getRecipeById)
@@ -44,7 +46,7 @@ recipeRoute.get('/recipe/:id', getRecipeById)
 recipeRoute.get('/categories/:id', getRecipesByCategory)
 
 // Rute untuk menampilkan form edit resep
-recipeRoute.get('/edit-recipe/:id', getEditRecipe)
+recipeRoute.get('/edit-recipe/:id', admin, getEditRecipe)
 
 // Rute untuk mendapatkan resep acak
 recipeRoute.get('/random-recipe', getRandomRecipe)
@@ -69,6 +71,6 @@ recipeRoute.post('/search', searchRecipesAndCategories)
 recipeRoute.post('/edit-recipe/:id', updateRecipe)
 
 // Route untuk menangani delete resep
-recipeRoute.post('/delete-recipe/:id', deleteRecipe)
+recipeRoute.post('/delete/:id', deleteRecipe)
 
 module.exports = recipeRoute

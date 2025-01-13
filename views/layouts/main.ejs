@@ -29,8 +29,9 @@
     <nav class="navbar navbar-expand-lg bg-light navbar-sticky">
         <div class="container">
             <!-- Merek atau Logo Navbar -->
-            <a class="navbar-brand fw-bold" href="#"><img src="/img/logo.svg" alt="RecipeApp" width="229"
-                    height="68"></a>
+            <a class="navbar-brand fw-bold" href="#">
+                <img src="/img/logo.svg" alt="RecipeApp" width="229" height="68">
+            </a>
 
             <!-- Tombol Navbar (untuk layar kecil) -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
@@ -58,10 +59,16 @@
 
                 <!-- Tautan di Sisi Kanan -->
                 <div class="d-flex">
-                    <form action="/search" method="post">
-                        <input type="search" name="searchTerm" class="form-control" placeholder="Cari..."
-                            aria-label="search">
+                    <form action="/search" method="post" class="me-2">
+                        <input type="search" name="searchTerm" class="form-control" placeholder="Cari..." aria-label="search">
                     </form>
+                    <% if (user) { %>
+                        <form action="/logout" method="post">
+                            <button type="submit" class="btn btn-outline-danger">Logout</button>
+                        </form>
+                    <% } else { %>
+                        <a href="/login" class="btn btn-outline-primary">Login</a>
+                    <% } %>
                 </div>
             </div>
         </div>
@@ -108,7 +115,9 @@
         <!-- Hak Cipta -->
         <div class="text-center p-3 bg-light border-top">
             ©
-            <script>document.write(new Date().getFullYear())</script> RecipeApp. Semua Hak Dilindungi.
+            <script>
+                document.write(new Date().getFullYear())
+            </script> RecipeApp. Semua Hak Dilindungi.
         </div>
     </footer>
 

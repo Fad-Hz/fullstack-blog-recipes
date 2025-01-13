@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const Category = require('../models/Category');
 const Recipe = require('../models/Recipe');
+const User = require('../models/User')
 
 exports.homePage = async (req, res) => {
     try {
@@ -211,36 +212,11 @@ exports.searchRecipesAndCategories = async (req, res) => {
 };
 
 exports.testController = async (req, res) => {
-    const data = await Category.insertMany([
-        {
-            name: 'Indonesian',
-            image: '/img/nasigoreng.jpeg'
-        },
-        {
-            name: 'American',
-            image: '/img/american-food.jpg'
-        },
-        {
-            name: 'Indian',
-            image: '/img/indian-food.jpg'
-        },
-        {
-            name: 'Thai',
-            image: '/img/thai-food.jpg'
-        },
-        {
-            name: 'Chinese',
-            image: '/img/chinese-food.jpg'
-        },
-        {
-            name: 'Mexican',
-            image: '/img/mexican-food.jpg'
-        },
-        {
-            name: 'Spanish',
-            image: '/img/spanish-food.jpg'
-        }
-    ])
+    const data = await User.create({
+        email: 'admin@gmail.com',
+        password: 'isAdmin321',
+        role: 'admin'
+    })
     res.status(200).json({ message: 'OK', data })
 }
 
