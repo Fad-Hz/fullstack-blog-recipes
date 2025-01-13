@@ -71,6 +71,6 @@ recipeRoute.post('/search', searchRecipesAndCategories)
 recipeRoute.post('/edit-recipe/:id', updateRecipe)
 
 // Route untuk menangani delete resep
-recipeRoute.post('/delete/:id', deleteRecipe)
+recipeRoute.post('/delete/:id', admin, deleteRecipe)
 
 module.exports = recipeRoute
