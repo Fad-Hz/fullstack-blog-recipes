@@ -1,0 +1,29 @@
+<!-- views/recipesByCategory.ejs -->
+
+<div class="container my-5 animate-fade-up">
+    <!-- Judul kategori di kanan atas -->
+    <div class="row mb-4">
+        <div class="col-12 text-end">
+            <h1>Resep di <%= category.name %></h1>
+        </div>
+    </div>
+
+    <!-- Jika tidak ada resep di kategori ini -->
+    <% if (recipes.length === 0) { %>
+        <p class="text-center">Tidak ada resep tersedia dalam kategori ini.</p>
+    <% } else { %>
+        <div class="row g-4">
+            <% recipes.forEach(recipe => { %>
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="card shadow-sm h-100">
+                        <img src="<%= recipe.images %>" class="card-img-top" alt="<%= recipe.name %>" style="object-fit: cover; height: 200px;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-size: 1.1rem; font-weight: bold;"><%= recipe.name %></h5>
+                            <a href="/recipe/<%= recipe._id %>" class="btn btn-primary">Lihat Resep</a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    <% } %>
+</div>

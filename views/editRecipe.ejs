@@ -1,0 +1,44 @@
+<div class="container py-5 animate-fade-up">
+  <h2 class="fw-bold text-center">Edit Resep Anda</h2>
+  <form action="/edit-recipe/<%= recipe._id %>" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="name" class="form-label">Nama Resep</label>
+      <input type="text" class="form-control" id="name" name="name" value="<%= recipe.name %>" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Deskripsi</label>
+      <textarea class="form-control" id="description" name="description" required><%= recipe.description %></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email Anda</label>
+      <input type="email" class="form-control" id="email" name="email" value="<%= recipe.email %>" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="ingredients" class="form-label">Bahan-Bahan (pisahkan dengan koma)</label>
+      <textarea class="form-control" id="ingredients" name="ingredients" required><%= recipe.ingredients.join(', ') %></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="images" class="form-label">Gambar</label>
+      <input type="file" class="form-control" id="images" name="images">
+      <small class="text-muted">Kosongkan jika Anda tidak ingin mengubah gambar.</small>
+    </div>
+
+    <div class="mb-3">
+      <label for="category" class="form-label">Kategori</label>
+      <select id="category" name="category" class="form-select" required>
+        <option value="">Pilih Kategori</option>
+        <% categories.forEach(category => { %>
+          <option value="<%= category._id %>" <%= recipe.category.toString() === category._id.toString() ? 'selected' : '' %>>
+            <%= category.name %>
+          </option>
+        <% }) %>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Perbarui Resep</button>
+  </form>
+</div>

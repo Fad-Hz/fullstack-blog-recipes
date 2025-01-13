@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <style>
+        /* Menambahkan efek bayangan pada navbar */
+        .navbar {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Menjadikan navbar tetap di atas */
+        .navbar-sticky {
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light navbar-sticky">
+        <div class="container">
+            <!-- Merek atau Logo Navbar -->
+            <a class="navbar-brand fw-bold" href="#"><img src="/img/logo.svg" alt="RecipeApp" width="229"
+                    height="68"></a>
+
+            <!-- Tombol Navbar (untuk layar kecil) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Tautan Navbar -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <!-- Tautan di Tengah -->
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="<%= href %>">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">Tentang Kami</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/submit-recipe">Kirim Resep</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Kontak</a>
+                    </li>
+                </ul>
+
+                <!-- Tautan di Sisi Kanan -->
+                <div class="d-flex">
+                    <form action="/search" method="post">
+                        <input type="search" name="searchTerm" class="form-control" placeholder="Cari..."
+                            aria-label="search">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <%- body -%>
+
+    <footer class="bg-light text-center text-lg-start mt-5 shadow-sm">
+        <div class="container p-4">
+            <!-- Kontainer Grid -->
+            <div class="row">
+                <!-- Bagian Tentang -->
+                <div class="col-lg-6 col-md-12 mb-4">
+                    <h5 class="text-uppercase">RecipeApp</h5>
+                    <p>
+                        Platform utama Anda untuk menemukan dan berbagi resep lezat dari seluruh dunia.
+                        Mari kita membuat memasak menjadi menyenangkan dan mudah!
+                    </p>
+                </div>
+
+                <!-- Bagian Tautan -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="text-uppercase">Tautan Cepat</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/" class="text-decoration-none">Beranda</a></li>
+                        <li><a href="/about" class="text-decoration-none">Tentang Kami</a></li>
+                        <li><a href="/submit" class="text-decoration-none">Kirim Resep</a></li>
+                        <li><a href="/contact" class="text-decoration-none">Kontak</a></li>
+                    </ul>
+                </div>
+
+                <!-- Bagian Info Kontak -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="text-uppercase">Hubungi Kami</h5>
+                    <ul class="list-unstyled">
+                        <li>Email: support@recipeapp.com</li>
+                        <li>Telepon: +123 456 7890</li>
+                        <li>Alamat: 123 Culinary St., Food City</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hak Cipta -->
+        <div class="text-center p-3 bg-light border-top">
+            ©
+            <script>document.write(new Date().getFullYear())</script> RecipeApp. Semua Hak Dilindungi.
+        </div>
+    </footer>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/scripts.js"></script>
+</body>
+
+</html>

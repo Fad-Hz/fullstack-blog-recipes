@@ -1,0 +1,41 @@
+<div class="container py-5 animate-fade-up">
+    <h2 class="fw-bold text-center">Kirim Resep Anda</h2>
+    <form action="/submit-recipe" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="name" class="form-label">Nama Resep</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Deskripsi</label>
+            <textarea class="form-control" id="description" name="description" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email Anda</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="ingredients" class="form-label">Bahan-bahan (pisahkan dengan koma)</label>
+            <textarea class="form-control" id="ingredients" name="ingredients" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="images" class="form-label">Gambar</label>
+            <input type="file" class="form-control" id="images" name="images" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="category" class="form-label">Kategori</label>
+            <select id="category" name="category" class="form-select" required>
+                <option value="">Pilih Kategori</option>
+                <% categories.forEach(category => { %>
+                    <option value="<%= category._id %>"><%= category.name %></option>
+                <% }) %>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Kirim Resep</button>
+    </form>
+</div>

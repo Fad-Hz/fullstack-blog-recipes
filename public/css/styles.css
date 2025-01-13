@@ -1,0 +1,56 @@
+.animate-fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.animate-fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+    /* Efek hover untuk gambar */
+    img {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    img:hover {
+        transform: scale(1.05); /* Membesarkan gambar sedikit */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Bayangan lebih besar saat hover */
+    }
+
+    /* Efek hover untuk tombol */
+    .btn:hover {
+        transform: translateY(-3px); /* Menarik tombol sedikit ke atas */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Menambahkan bayangan */
+    }
+
+    /* Efek hover untuk card */
+    .card:hover {
+        transform: translateY(-5px); /* Card bergerak sedikit ke atas */
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Bayangan lebih besar */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Efek hover untuk link View All */
+    .view-all-section a:hover img {
+        transform: scale(1.1); /* Membesarkan gambar saat hover pada link */
+    }
+
+    /* Transisi untuk semua elemen hover */
+    .card, .btn, .view-all-section img {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+/* Custom styles for About Page */
+.card {
+    border-radius: 12px;
+}
+
+h2, h3 {
+    color: #333;
+    font-weight: 600;
+}
+
+.card-body p {
+    font-size: 14px;
+    line-height: 1.5;
+}

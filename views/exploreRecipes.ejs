@@ -1,0 +1,55 @@
+<div class="container py-5 animate-fade-up">
+  <h1 class="fw-bold mb-4">Jelajahi Resep</h1>
+
+  <!-- Filter Kategori -->
+  <form action="/explore-recipes" method="get" class="mb-4">
+    <div class="form-group">
+      <label for="categoryId" class="form-label">Filter berdasarkan Kategori</label>
+      <select id="categoryId" name="categoryId" class="form-select">
+        <option value="">Semua Kategori</option>
+        <% categories.forEach(category => { %>
+          <option value="<%= category._id %>" <%= category._id == selectedCategoryId ? 'selected' : '' %>>
+            <%= category.name %>
+          </option>
+        <% }) %>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Terapkan Filter</button>
+  </form>
+
+  <!-- Grid Resep -->
+  <div class="row g-4">
+    <% if (recipes && recipes.length > 0) { %>
+      <% recipes.forEach(recipe => { %>
+        <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+          <div class="card shadow-sm border-0">
+            <a href="/recipe/<%= recipe._id %>" class="text-decoration-none">
+              <img src="<%= recipe.images %>" alt="<%= recipe.name %>"
+                   class="card-img-top img-fluid rounded-top"
+                   style="height: 180px; object-fit: cover;">
+            </a>
+            <div class="card-body text-center">
+              <a href="/recipe/<%= recipe._id %>" class="text-decoration-none">
+                <h6 class="card-title text-dark fw-semibold mb-1"><%= recipe.name %></h6>
+              </a>
+              <p class="card-text text-muted small"><%= recipe.description.substring(0, 60) %>...</p>
+              
+              <!-- Tombol Edit dan Hapus -->
+              <div class="d-flex justify-content-center mt-2">
+                <a href="/edit-recipe/<%= recipe._id %>" class="btn btn-sm btn-warning me-2">Edit</a>
+                <form action="/delete-recipe/<%= recipe._id %>" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus resep ini?')">
+                  <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <!-- Pesan Jika Tidak Ada Resep -->
+      <div class="col-12">
+        <p class="text-center text-muted">Tidak ada resep yang ditemukan untuk kategori ini.</p>
+      </div>
+    <% } %>
+  </div>
+</div>

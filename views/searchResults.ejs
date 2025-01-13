@@ -1,0 +1,49 @@
+<!-- views/searchResults.ejs -->
+<div class="container my-5 animate-fade-up">
+    <h1 class="text-center mb-4">Hasil Pencarian untuk "<%= searchTerm %>"</h1>
+
+    <!-- Hasil pencarian resep -->
+    <div class="mb-5">
+        <h3>Resep</h3>
+        <% if (recipes.length === 0) { %>
+            <p>Tidak ada resep yang cocok dengan "<%= searchTerm %>".</p>
+        <% } else { %>
+            <div class="row g-4">
+                <% recipes.forEach(recipe => { %>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="card shadow-sm">
+                            <img src="<%= recipe.images %>" class="card-img-top" alt="<%= recipe.name %>" style="object-fit: cover; height: 200px;">
+                            <div class="card-body">
+                                <h5 class="card-title" style="font-size: 1.1rem; font-weight: bold;"><%= recipe.name %></h5>
+                                <p class="card-text" style="font-size: 0.9rem;"><%= recipe.description.substring(0, 100) %>...</p>
+                                <a href="/recipe/<%= recipe._id %>" class="btn btn-primary">Lihat Resep</a>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        <% } %>
+    </div>
+
+    <!-- Hasil pencarian kategori -->
+    <div>
+        <h3>Kategori</h3>
+        <% if (categories.length === 0) { %>
+            <p>Tidak ada kategori yang cocok dengan "<%= searchTerm %>".</p>
+        <% } else { %>
+            <div class="row g-4">
+                <% categories.forEach(category => { %>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title" style="font-size: 1.1rem; font-weight: bold;"><%= category.name %></h5>
+                                <p class="card-text"><%= category.description %></p>
+                                <a href="/categories/<%= category._id %>" class="btn btn-primary">Jelajahi</a>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        <% } %>
+    </div>
+</div>
