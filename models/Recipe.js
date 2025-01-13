@@ -11,11 +11,6 @@ const recipeSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    email: {
-        type: String,
-        required: true,
-        match: /.+\@.+\..+/ // Validasi format email
-    },
     ingredients: {
         type: [String], // Array of ingredients
         required: true

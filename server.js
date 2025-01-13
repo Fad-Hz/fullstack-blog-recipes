@@ -39,6 +39,12 @@ app.use((req, res) => {
     })
 })
 
+app.use((err, req, res, next) => {
+    console.error(err.stack); // Log error untuk debugging
+    res.status(500); // Set status response ke 500
+    res.render('500', { error: err, href: '/', title: 'Internal Server Error' }) // Render file views/500.ejs
+})
+
 // Menentukan port dan menjalankan server
 const PORT = process.env.PORT || 4000
 app.listen(PORT, () => {
