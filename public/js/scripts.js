@@ -27,17 +27,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-document.getElementById('contactForm').addEventListener('submit', function (event) {
-    event.preventDefault(); // Mencegah form submit biasa
+document.getElementById('sendMessage').addEventListener('click', function () {
+    const name = document.getElementById('name').value.trim();
+    const message = document.getElementById('message').value.trim();
 
-    var name = document.getElementById('name').value;
-    var email = document.getElementById('email').value;
-    var message = document.getElementById('message').value;
+    if (!name || !message) {
+        alert('Mohon isi semua bidang sebelum mengirim pesan.');
+        return;
+    }
 
-    // Membuat pesan WhatsApp
-    var whatsappMessage = encodeURIComponent("Name: " + name + "\nEmail: " + email + "\nMessage: " + message);
+    const phone = '6288297758043'; // Nomor WhatsApp tujuan
+    const encodedMessage = encodeURIComponent(`Halo, saya ${name}. ${message}`);
+    const whatsappUrl = `https://wa.me/${phone}?text=${encodedMessage}`;
 
-    // Redirect ke WhatsApp
-    var whatsappUrl = "https://wa.me/6288297758043?text=" + whatsappMessage;
-    window.location.href = whatsappUrl;
+    window.open(whatsappUrl, '_blank');
 });

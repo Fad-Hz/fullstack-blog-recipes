@@ -1,6 +1,6 @@
 <!-- views/recipesByCategory.ejs -->
 
-<div class="container my-5 animate-fade-up">
+<div class="container my-5">
     <!-- Judul kategori di kanan atas -->
     <div class="row mb-4">
         <div class="col-12 text-end">
@@ -14,7 +14,7 @@
     <% } else { %>
         <div class="row g-4">
             <% recipes.forEach(recipe => { %>
-                <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="col-lg-2 col-md-4 col-sm-6 animate-fade-up">
                     <div class="card shadow-sm h-100">
                         <img src="<%= recipe.images %>" class="card-img-top" alt="<%= recipe.name %>" style="object-fit: cover; height: 200px;">
                         <div class="card-body">

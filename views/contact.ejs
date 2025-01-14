@@ -1,8 +1,7 @@
 <body style="background-image: url('/img/i-like-food.svg'); background-color: rgb(243, 243, 243);">
-
     <div class="container py-5 animate-fade-up">
         <h2 class="fw-bold text-center mb-4">Hubungi Kami</h2>
-        <form action="https://wa.me/6288297758043" method="get" id="contactForm">
+        <form id="contactForm">
             <div class="mb-3">
                 <label for="name" class="form-label">Nama Anda</label>
                 <input type="text" class="form-control" id="name" name="name" required>
@@ -11,10 +10,7 @@
                 <label for="message" class="form-label">Pesan Anda</label>
                 <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
             </div>
-    
-            <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+
+            <button type="button" class="btn btn-primary" id="sendMessage">Kirim Pesan</button>
         </form>
     </div>
-    
-    </body>
-    
