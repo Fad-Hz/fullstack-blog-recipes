@@ -4,8 +4,7 @@
             <div class="row align-items-center">
                 <!-- Bagian Gambar -->
                 <div class="col-lg-6 text-center mb-4 mb-lg-0">
-                    <img src="/img/hero-image.png" alt="Resep Lezat" class="img-fluid rounded shadow-sm" width="607"
-                        height="510">
+                    <img src="/img/hero-image.png" alt="Resep Lezat" class="img-fluid rounded shadow-sm">
                 </div>
 
                 <!-- Bagian Teks -->
@@ -15,9 +14,9 @@
                         Jelajahi dunia resep lezat yang dibuat oleh pecinta makanan dari seluruh dunia. Apakah Anda
                         mencari sesuatu yang baru atau menginginkan kejutan, kami siap membantu!
                     </p>
-                    <div class="d-flex gap-3">
-                        <a href="/explore-latest" class="btn btn-primary btn-lg">Jelajahi Terbaru</a>
-                        <a href="/random-recipe" class="btn btn-outline-secondary btn-lg">Kejutkan Saya</a>
+                    <div class="d-flex flex-column flex-md-row gap-3">
+                        <a href="/explore-latest" class="btn btn-primary btn-lg w-100 w-md-auto">Jelajahi Terbaru</a>
+                        <a href="/random-recipe" class="btn btn-outline-secondary btn-lg w-100 w-md-auto">Kejutkan Saya</a>
                     </div>
                 </div>
             </div>
@@ -26,62 +25,43 @@
 
     <div class="categories-section py-5 bg-light animate-fade-up">
         <div class="container text-center" id="categories">
-            <!-- Judul Bagian -->
             <h1 class="fw-bold mb-4">Kategori</h1>
             <% if (!categories) { %>
-                <!-- Jika Tidak Ada Kategori -->
                 <div class="alert alert-warning" role="alert">
                     Tidak ada kategori ditemukan. Silakan tambahkan beberapa kategori.
                 </div>
-                <% } else { %>
-                    <!-- Grid Kategori -->
-                    <div class="row g-4">
-                        <% categories.forEach(category=> { %>
-                            <div class="col-6 col-md-4 col-lg-3">
-                                <a href="/categories/<%= category._id %>" class="text-decoration-none">
-                                    <div class="card shadow-sm h-100">
-                                        <img src="<%= category.image %>" class="card-img-top"
-                                            alt="<%= category.name %>">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-dark">
-                                                <%= category.name %>
-                                            </h5>
-                                        </div>
+            <% } else { %>
+                <div class="row g-4">
+                    <% categories.forEach(category => { %>
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <a href="/categories/<%= category._id %>" class="text-decoration-none">
+                                <div class="card shadow-sm h-100">
+                                    <img src="<%= category.image %>" class="card-img-top img-fluid"
+                                        alt="<%= category.name %>">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-dark">
+                                            <%= category.name %>
+                                        </h5>
                                     </div>
-                                </a>
-                            </div>
-                            <% }) %>
-                    </div>
-
-                    <div class="view-all-section text-center py-5">
-                        <a href="/categories" class="d-inline-block position-relative">
-                            <!-- Gambar -->
-                            <img src="/img/view-all.jpg" alt="Lihat Semua Kategori" class="img-fluid rounded shadow-sm"
-                                style="max-width: 100%; height: auto;">
-
-                            <!-- Teks Overlay -->
-                            <div class="position-absolute top-50 start-50 translate-middle text-white fw-bold fs-4"
-                                style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);">
-                                Lihat Semua
-                            </div>
-                        </a>
-                    </div>
-                    <% } %>
+                                </div>
+                            </a>
+                        </div>
+                    <% }) %>
+                </div>
+            <% } %>
         </div>
     </div>
 
     <div class="latest-recipes-section py-5 bg-light animate-fade-up" id="recipes">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <!-- Judul dan Tombol -->
                 <h2 class="fw-bold">Resep Terbaru</h2>
                 <a href="/explore-latest" class="btn btn-outline-primary btn-lg">Lihat Lebih Banyak</a>
             </div>
-            <!-- Grid Resep -->
             <div class="row g-4">
-                <% if (recipes && recipes.length> 0) { %>
-                    <% recipes.forEach(recipe=> { %>
-                        <div class="col-6 col-md-4 col-lg-3 col-xl-2>
+                <% if (recipes && recipes.length > 0) { %>
+                    <% recipes.forEach(recipe => { %>
+                        <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                             <div class="card shadow-sm border-0">
                                 <a href="/recipe/<%= recipe._id %>" class="text-decoration-none">
                                     <img src="<%= recipe.images %>" alt="<%= recipe.name %>"
@@ -97,50 +77,37 @@
                                     <p class="card-text text-muted small">
                                         <%= recipe.description.substring(0, 60) %>...
                                     </p>
-
-                                    <!-- Tombol Edit dan Hapus -->
                                     <div class="d-flex justify-content-center mt-2">
-                                        <a href="/edit-recipe/<%= recipe._id %>"
-                                            class="btn btn-sm btn-warning me-2">Edit</a>
+                                        <a href="/edit-recipe/<%= recipe._id %>" class="btn btn-sm btn-warning me-2">Edit</a>
                                         <form action="/delete/<%= recipe._id %>" method="post" class="d-inline">
                                             <button type="submit" class="btn btn-sm btn-danger"
-                                                onclick="return confirm('Apakah Anda yakin ingin menghapus resep ini?')">Delete</button>
+                                                onclick="return confirm('Apakah Anda yakin ingin menghapus resep ini?')">
+                                                Delete
+                                            </button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <% }) %>
-                            <% } else { %>
-                                <!-- Pesan Jika Tidak Ada Resep -->
-                                <div class="col-12">
-                                    <p class="text-center text-muted">Tidak ada resep yang ditemukan untuk kategori ini.
-                                    </p>
-                                </div>
-                                <% } %>
+                    <% }) %>
+                <% } else { %>
+                    <div class="col-12">
+                        <p class="text-center text-muted">Tidak ada resep yang ditemukan untuk kategori ini.</p>
+                    </div>
+                <% } %>
             </div>
         </div>
     </div>
 
     <div class="submit-section py-5 bg-light animate-fade-up" id="submit-section">
         <div class="container text-center">
-            <!-- Gambar -->
-            <img src="/img/publish-recipe.png" alt="Publikasikan Resep" class="img-fluid mb-4"
-                style="max-width: 300px;">
-
-            <!-- Judul -->
+            <img src="/img/publish-recipe.png" alt="Publikasikan Resep" class="img-fluid mb-4" style="max-width: 300px;">
             <h1 class="fw-bold mb-3">Publikasikan Resep Anda GRATIS Hari Ini</h1>
-
-            <!-- Deskripsi -->
             <p class="text-muted mb-4">
                 Bagikan resep terbaik Anda dengan dunia dan inspirasi orang lain untuk memasak hidangan lezat.
                 Publikasi itu sederhana, cepat, dan sepenuhnya gratis!
             </p>
-
-            <!-- Tautan/Tombol -->
-            <a href="/submit-recipe" class="btn btn-primary btn-lg">
-                Kirim Resep Anda
-            </a>
+            <a href="/submit-recipe" class="btn btn-primary btn-lg">Kirim Resep Anda</a>
         </div>
     </div>
 </body>
