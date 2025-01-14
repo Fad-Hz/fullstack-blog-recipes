@@ -70,7 +70,7 @@
         </div>
     </div>
 
-    <div class="latest-recipes-section py-5 bg-light" id="recipes">
+    <div class="latest-recipes-section py-5 bg-light animate-fade-up" id="recipes">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <!-- Judul dan Tombol -->
@@ -81,7 +81,7 @@
             <div class="row g-4">
                 <% if (recipes && recipes.length> 0) { %>
                     <% recipes.forEach(recipe=> { %>
-                        <div class="col-6 col-md-4 col-lg-3 col-xl-2 animate-fade-up>
+                        <div class="col-6 col-md-4 col-lg-3 col-xl-2>
                             <div class="card shadow-sm border-0">
                                 <a href="/recipe/<%= recipe._id %>" class="text-decoration-none">
                                     <img src="<%= recipe.images %>" alt="<%= recipe.name %>"
