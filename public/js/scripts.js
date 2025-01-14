@@ -40,5 +40,6 @@ document.getElementById('sendMessage').addEventListener('click', function () {
     const encodedMessage = encodeURIComponent(`Halo, saya ${name}. ${message}`);
     const whatsappUrl = `https://wa.me/${phone}?text=${encodedMessage}`;
 
-    window.open(whatsappUrl, '_blank');
+    // Membuka WhatsApp di perangkat
+    window.location.href = whatsappUrl;
 });
