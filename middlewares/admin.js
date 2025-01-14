@@ -9,6 +9,7 @@ const authMiddleware = (req, res, next) => {
       message: 'Directory Access is Forbidden. Please log in.',
       href: '/',
       title: '403 Forbidden',
+      status: '403',
       loginRedirect: true,
     });
   }
@@ -17,9 +18,10 @@ const authMiddleware = (req, res, next) => {
   jwt.verify(token, 'secretKey', (err, decoded) => {
     if (err) {
       return res.status(403).render('403', {
-        message: 'Invalid or expired token. Please log in again.',
+        message: 'Username Atau Password Salah.',
         href: '/',
-        title: '403 Forbidden',
+        status: '400',
+        title: '400 Bad Request',
         loginRedirect: true,
       });
     }

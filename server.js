@@ -31,7 +31,7 @@ app.set('layout', './layouts/main')
 app.set('view engine', 'ejs')
 
 // Rute utama aplikasi, mengimpor rute dari file lain
-app.use('/', require('./routes/recipe.routes'))
+app.use('/', require('./routes/recipeRoute'))
 app.use('/', require('./routes/auth.js'))
 
 // Rute untuk menangani 404 (Page Not Found)

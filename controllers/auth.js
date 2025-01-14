@@ -17,9 +17,10 @@ const login = async (req, res) => {
         // Validasi input sederhana
         if (!email || !password) {
             return res.status(400).render('403', {
-                title: '403',
+                title: '400 Bad Request',
                 href: '/',
-                message: 'Email and password are required.'
+                message: 'Email and password are required.',
+                status: '400'
             });
         }
 
@@ -29,9 +30,10 @@ const login = async (req, res) => {
         // Jika user tidak ditemukan atau password tidak cocok
         if (!user || user.password !== password) {
             return res.status(401).render('403', {
-                title: '403',
+                title: '400 Bad Request',
                 href: '/',
-                message: 'Invalid email or password.'
+                message: 'Email atau Password salah',
+                status: '400'
             });
         }
 
