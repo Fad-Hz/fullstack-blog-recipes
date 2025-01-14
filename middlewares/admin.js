@@ -6,7 +6,7 @@ const authMiddleware = (req, res, next) => {
 
   if (!token) {
     return res.status(403).render('403', {
-      message: 'Directory Access is Forbidden. Please log in.',
+      message: 'Akses ini hanya milik admin, silahkan login',
       href: '/',
       title: '403 Forbidden',
       status: '403',
@@ -18,10 +18,10 @@ const authMiddleware = (req, res, next) => {
   jwt.verify(token, 'secretKey', (err, decoded) => {
     if (err) {
       return res.status(403).render('403', {
-        message: 'Username Atau Password Salah.',
+        message: 'Akses ini hanya milik admin, silahkan login',
         href: '/',
-        status: '400',
-        title: '400 Bad Request',
+        status: '403',
+        title: '403 Forbidden',
         loginRedirect: true,
       });
     }
